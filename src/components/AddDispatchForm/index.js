@@ -16,6 +16,10 @@ class AddDispatchForm extends React.Component {
     notes: '',
   }
 
+  formatDate(rawDate) {
+    return rawDate.toLocaleString('en-US', { weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: true });
+  }
+
   handleChange = (event) => {
     let val = event.target.value;
     this.setState({ [event.target.name]: val});
@@ -24,6 +28,22 @@ class AddDispatchForm extends React.Component {
   createLog = (event) => {
     event.preventDefault();
     this.props.addLog(this.state);
+    this.setState({
+      complaint: '',
+      location: '',
+      received: '',
+      dispatched: '',
+      medics: '',
+      secured: '',
+      available: '',
+      ambulanceCalled: '',
+      ambulanceOnScene: '',
+      notes: '',
+    });
+  }
+
+  fillDate = (event) => {
+    this.setState({ [event.target.name]: new Date()});
   }
 
   render() {
@@ -31,43 +51,60 @@ class AddDispatchForm extends React.Component {
       <div>
         <form onSubmit={this.createLog}>
           <div>
-            <textarea name='complaint' placeholder='Complaint' onChange={this.handleChange}/>
+            <div className={styles.field}>
+              Complaint<br />
+              <textarea name='complaint' placeholder='Complaint' onChange={this.handleChange}/>
+            </div>
+            <div className={styles.field}>
+              Location<br />
+              <textarea name='location' placeholder='Location' onChange={this.handleChange}/>
+            </div>
           </div>
           <div>
-            <textarea name='location' placeholder='Location' onChange={this.handleChange}/>
+            <div className={styles.field}>
+              Medic/Squad:
+              <input name='medics' type='text' onChange={this.handleChange}/>
+            </div>
+            <div className={styles.field}>
+              Received:
+              <input name='received' type='text' value={this.formatDate(this.state.received)} onChange={this.handleChange}/>
+              <button type='button' name='received' onClick={this.fillDate}>&#10003;</button>
+            </div>
+            <div className={styles.field}>
+              Dispatched:
+              <input name='dispatched' type='text' value={this.formatDate(this.state.dispatched)} onChange={this.handleChange}/>
+              <button type='button' name='dispatched' onClick={this.fillDate}>&#10003;</button>
+            </div>
+            <div className={styles.field}>
+              Secured:
+              <input name='secured' type='text' value={this.formatDate(this.state.secured)} onChange={this.handleChange}/>
+              <button type='button' name='secured' onClick={this.fillDate}>&#10003;</button>
+            </div>
+            <div className={styles.field}>
+              Available:
+              <input name='available' type='text' value={this.formatDate(this.state.available)} onChange={this.handleChange}/>
+              <button type='button' name='available' onClick={this.fillDate}>&#10003;</button>
+            </div>
           </div>
           <div>
-            Received:
-            <input name='received' type='text' onChange={this.handleChange}/>
+            <div className={styles.field}>
+              Ambulance Called:
+              <input name='ambulanceCalled' type='text' value={this.formatDate(this.state.ambulanceCalled)} onChange={this.handleChange}/>
+              <button type='button' name='ambulanceCalled' onClick={this.fillDate}>&#10003;</button>
+            </div>
+            <div className={styles.field}>
+              Ambulance On-Scene:
+              <input name='ambulanceOnScene' type='text' value={this.formatDate(this.state.ambulanceOnScene)} onChange={this.handleChange}/>
+              <button type='button' name='ambulanceOnScene' onClick={this.fillDate}>&#10003;</button>
+            </div>
           </div>
           <div>
-            Dispatched:
-            <input name='dispatched' type='text' onChange={this.handleChange}/>
+            <div className={styles.field}>
+              Notes<br />
+              <textarea name='notes' placeholder='Notes' onChange={this.handleChange}/>
+            </div>
           </div>
-          <div>
-            Medic/Squad:
-            <input name='medics' type='text' onChange={this.handleChange}/>
-          </div>
-          <div>
-            Secured:
-            <input name='secured' type='text' onChange={this.handleChange}/>
-          </div>
-          <div>
-            Available:
-            <input name='available' type='text' onChange={this.handleChange}/>
-          </div>
-          <div>
-            Ambulance Called:
-            <input name='ambulanceCalled' type='text' onChange={this.handleChange}/>
-          </div>
-          <div>
-            Ambulance On-Scene:
-            <input name='ambulanceOnScene' type='text' onChange={this.handleChange}/>
-          </div>
-          <div>
-            <textarea name='notes' placeholder='Notes' onChange={this.handleChange}/>
-          </div>
-          <button type='submit'>+</button>
+          <button type='submit'>Add New Log</button>
         </form>
       </div>
     );

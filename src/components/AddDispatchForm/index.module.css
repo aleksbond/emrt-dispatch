@@ -1,0 +1,25 @@
+form {
+  width: 96%;
+  padding: 8px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: left;
+  border-radius: 10px;
+  background: #bad4ff; }
+  form div.field {
+    align-self: center;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 4px;
+    background: white; }
+    form div.field input {
+      margin: 0 4px; }
+  form button[type="submit"] {
+    align-self: flex-end;
+    margin-left: auto;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 16px; }

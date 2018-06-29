@@ -1,2 +1,32 @@
 form {
+  width: 96%;
+  padding: 8px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: left;
+  border-radius: 10px;
+  background: #bad4ff;
+
+  div.field {
+    align-self: center;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 4px;
+    background: white;
+
+    input {
+      margin: 0 4px;
+    }
+  }
+
+  button[type="submit"] {
+    align-self: flex-end;
+    margin-left: auto;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
 }
