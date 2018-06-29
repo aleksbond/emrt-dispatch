@@ -23,7 +23,7 @@ class AddDispatchForm extends React.Component {
 
   createLog = (event) => {
     event.preventDefault();
-    //this.props.addLog();
+    this.props.addLog(this.state);
   }
 
   render() {
@@ -67,13 +67,15 @@ class AddDispatchForm extends React.Component {
           <div>
             <textarea name='notes' placeholder='Notes' onChange={this.handleChange}/>
           </div>
+          <button type='submit'>+</button>
         </form>
       </div>
     );
   }
 }
 
-AddDispatchForm.PropTypes = {
+AddDispatchForm.propTypes = {
+  addLog: PropTypes.func.isRequired,
 };
 
 export default AddDispatchForm;
