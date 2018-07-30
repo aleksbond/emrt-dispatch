@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.module.css';
 
-class AddDispatchForm extends React.Component {
+class AddLogForm extends React.Component {
   state = {
     complaint: '',
     location: '',
@@ -53,17 +53,17 @@ class AddDispatchForm extends React.Component {
           <div>
             <div className={styles.field}>
               Complaint<br />
-              <textarea name='complaint' placeholder='Complaint' onChange={this.handleChange}/>
+              <textarea value={this.state.complaint} name='complaint' placeholder='Complaint' onChange={this.handleChange}/>
             </div>
             <div className={styles.field}>
               Location<br />
-              <textarea name='location' placeholder='Location' onChange={this.handleChange}/>
+              <textarea value={this.state.location} name='location' placeholder='Location' onChange={this.handleChange}/>
             </div>
           </div>
           <div>
             <div className={styles.field}>
               Medic/Squad:
-              <input name='medics' type='text' onChange={this.handleChange}/>
+              <input value={this.state.medics} name='medics' type='text' onChange={this.handleChange}/>
             </div>
             <div className={styles.field}>
               Received:
@@ -101,7 +101,7 @@ class AddDispatchForm extends React.Component {
           <div>
             <div className={styles.field}>
               Notes<br />
-              <textarea name='notes' placeholder='Notes' onChange={this.handleChange}/>
+              <textarea value={this.state.notes} name='notes' placeholder='Notes' onChange={this.handleChange}/>
             </div>
           </div>
           <button type='submit'>Add New Log</button>
@@ -111,8 +111,8 @@ class AddDispatchForm extends React.Component {
   }
 }
 
-AddDispatchForm.propTypes = {
+AddLogForm.propTypes = {
   addLog: PropTypes.func.isRequired,
 };
 
-export default AddDispatchForm;
+export default AddLogForm;

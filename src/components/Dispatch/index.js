@@ -1,5 +1,6 @@
 import React from 'react';
-import AddDispatchForm from '../AddDispatchForm';
+import AddLogForm from '../AddLogForm';
+import Logs from '../Logs';
 import styles from './index.module.css';
 
 class Dispatch extends React.Component {
@@ -13,11 +14,18 @@ class Dispatch extends React.Component {
     this.setState({logs});
   };
 
+  updateLog = (key, updatedLog) => {
+    const logs = { ...this.state.logs };
+    logs[key] = updatedLog;
+    this.setState({ logs });
+  }
+
   render() {
     return (
       <div>
         <h1>EMRT Dispatch</h1>
-        <AddDispatchForm addLog={this.addLog}/>
+        <AddLogForm addLog={this.addLog}/>
+        <Logs logs={this.state.logs} updateLog={this.updateLog}/>
       </div>
     );
   }
