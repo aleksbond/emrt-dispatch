@@ -4,6 +4,7 @@ import styles from './index.module.css';
 
 class AddLogForm extends React.Component {
   state = {
+    id: '',
     complaint: '',
     location: '',
     received: '',
@@ -29,6 +30,7 @@ class AddLogForm extends React.Component {
     event.preventDefault();
     this.props.addLog(this.state);
     this.setState({
+      id: '',
       complaint: '',
       location: '',
       received: '',

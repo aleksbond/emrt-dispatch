@@ -9,6 +9,10 @@ class EditLogForm extends React.Component {
     return rawDate.toLocaleString('en-US', { weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: true });
   }
 
+  fillDate = (event) => {
+    this.setState({ [event.target.name]: new Date()});
+  }
+
   handleChange = (event) => {
     const val = event.target.value;
     const updatedLog = {
@@ -77,12 +81,11 @@ class EditLogForm extends React.Component {
           </div>
         </div>
       </div>
-    ); 
+    );
   }
 }
 
 EditLogForm.propTypes = {
-  key: PropTypes.string.isRequired,
   index: PropTypes.string.isRequired,
   log: PropTypes.object.isRequired,
   updateLog: PropTypes.func.isRequired,

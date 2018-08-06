@@ -5,18 +5,20 @@ import styles from './index.module.css';
 
 class Dispatch extends React.Component {
   state = {
-    logs: {},
+    logs: [],
   };
 
   addLog = (log) => {
-    const logs = { ...this.state.logs };
-    logs[`log${Date.now()}`] = log;
-    this.setState({logs});
+    const logs = [ ...this.state.logs ];
+    log.id = `log${Date.now()}`;
+    logs.unshift(log);
+    this.setState({ logs });
   };
 
   updateLog = (key, updatedLog) => {
-    const logs = { ...this.state.logs };
-    logs[key] = updatedLog;
+    let logs = [ ...this.state.logs ];
+    const logIndex = logs.findIndex((log => log.id === key));
+    logs[logIndex] = updatedLog;
     this.setState({ logs });
   }
 

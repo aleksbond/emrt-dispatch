@@ -1,13 +1,12 @@
 .editForm {
-  width: 96%;
   padding: 8px;
-  margin: auto;
+  margin: 8px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   text-align: left;
   border-radius: 10px;
-  background: #bad4ff;
+  border: 2px solid;
 
   div.field {
     align-self: center;
